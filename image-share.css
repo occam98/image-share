@@ -1,31 +1,33 @@
-/* CSS declarations go here */
-body{
-    
- font-family: Helvetica;   
-    
+.grid-block, .main, .post, .comments li, .comment-form {
+  background: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
+
+body {
+  background: #ffffff;
+  color: #000000; }
+
+#main {
+  position: relative;
+}
+.page {
+  position: absolute;
+  top: 0px;
+  width: 100%;
 }
 
-.uploadedImage{
-    
-height:250px;
-width: 250px;
-display:inline-block;
-float:left;      
-}
-
-.tableImage{
-
-height:100%;
-
-
-    
-}
-
-.uploadedImage:hover{
-    
- border: red solid 1px;
- 
- width: 248px;
-height:248px;
-    
+#header {
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  background: #f00;
+  color: #fff;
+  height: 100px;
+  text-align: center;
+  border-bottom: #000000 solid 1px;
+  
 }

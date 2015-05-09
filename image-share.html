@@ -1,25 +1,69 @@
 <head>
-  <title>image-share</title>
+  <title>image-share</title> 
 </head>
-
 <body>
-    {{>main}}
+	<div id="header">
+	 <h1>Welcome to ImageShare</h1>
+	</div>
+    {{> loginButtons align="left"}}
+    
+    {{#if currentUser}}
+	    
+	 {{>insertForm}}  
+    
+    
     {{>imagesSubmitted}}
-  
+	{{/if}}
 </body>
 
-<template name = "main">
-<h1>Upload a snapshot of your work here:</h1>
-<input type = "file" id = "myFileInput">
-<p></p>
+<!--
+
+<template name = "form">
+
+
+	<h2>Submit a photo of your work</h2>
+	
+		<form class="photoForm">
+		Problem: <input type = "text" id = "problem" placeholder="page # problem #"><br><br>
+		Your group members <input type = "text" id="group" size="50"> <br><br>
+		Your questions and comments about this problem: <br><br>
+		<textarea name="comments" form="photo" rows="4" cols="70" placeholder="Enter text here..."></textarea>
+		<br>
+		
+		Upload a snapshot of your work here: <input type = "file" id = "myFileInput">
+		<br /><br />
+		
+		<input type="submit" value="submit" />
+		</form>
+	<br>
+	
+	
+	<p></p>
+	
+	
+	
 </template>
+	
+	
+	-->
+<template name="insertForm">
+			{{#autoForm id="insertForm" type="insert" collection="Photos"}}
+			{{> afQuickField name="userId"}}
+			{{> afQuickField name="username"}}
+			{{> afQuickField name="groupMembers"}}
+			{{> afQuickField name="comments" rows="4"}}
 
+			{{> afQuickField name="fileId" type="cfs-file" collection="images"}}
+			<button type="submit">Submit</button>
+			{{/autoForm}}
+</template>	
+	
 <template name = "imagesSubmitted">
-
-{{#each images}}
-<div class = "uploadedImage">  
-  <img src="{{this.url}}" class = "tableImage" alt="thumbnail">
-</div>    
-{{/each}}
+	
+	{{#each images}}
+	<div class = "uploadedImage">  
+	  <img src="{{this.url}}" class = "tableImage" alt="thumbnail">
+	</div>    
+	{{/each}}
 
 </template>
