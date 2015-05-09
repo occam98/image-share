@@ -47,6 +47,10 @@
 	
 	-->
 <template name="insertForm">
+
+			{{> quickForm id="insertForm" type="insert" collection="Photos" omitFields="userId,username"}}
+
+<!--
 			{{#autoForm id="insertForm" type="insert" collection="Photos"}}
 			{{> afQuickField name="userId"}}
 			{{> afQuickField name="username"}}
@@ -56,6 +60,9 @@
 			{{> afQuickField name="fileId" type="cfs-file" collection="images"}}
 			<button type="submit">Submit</button>
 			{{/autoForm}}
+			
+			
+-->			
 </template>	
 	
 <template name = "imagesSubmitted">

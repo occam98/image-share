@@ -20,7 +20,10 @@ Photos.attachSchema(new SimpleSchema({
     type: String
   },
   comments: {
-	type: String  
+	type: String,  
+	autoform:{
+		rows: 5
+	}
   },
   fileId: {
     type: String
