@@ -1,8 +1,7 @@
+
  Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
-
-
 
 Photos = new Mongo.Collection("photos");
 Photos.attachSchema(new SimpleSchema({
@@ -11,7 +10,7 @@ Photos.attachSchema(new SimpleSchema({
 	autoValue:function(){return this.userId},
 	
   },
-  username:{
+  userName:{
 	  type: String,
 	  autoValue:function(){return Meteor.users.findOne({_id: this.userId}).username},
   },
@@ -26,9 +25,17 @@ Photos.attachSchema(new SimpleSchema({
 	}
   },
   fileId: {
-    type: String
+    type: String,
+    autoform: {
+	    afFieldInput:{
+		    type: "cfs-file",
+		    collection: "images"
+	    }
+    }
   }
 }));
+
+
 
 
 Images.allow({
@@ -38,67 +45,52 @@ Images.allow({
   fetch: null
 });
 
+
 if(Meteor.isClient){
-
-Accounts.ui.config({
-	  passwordSignupFields: "USERNAME_ONLY"
-});   
-
-}
-
-
-
-
-/*
-if (Meteor.isClient) {
-  
-	Template.imagesS
-	ubmitted.helpers({
-   images: Images.find() 
-    
-});
-*/
-    
-
-/*    
-    
-Template.imagesSubmitted.events({
-   
-'dblclick .uploadedImage': function(e){
- 
-    Images.remove({_id:this._id});
-    
-}
-
-    
-});
-
-*/
-
-/*    
-Template.form.events({
-
-'click input[type=submit]': function(event, template) {
 	
-	console.log("form submit")
-    event.preventDefault();
-    
-    FS.Utility.eachFile(event, function(file) {
+	Accounts.ui.config({
+		  passwordSignupFields: "USERNAME_ONLY"
+	});  
+	
+	//problem is here
+	Template.imagesSubmitted.helpers({
+	   photos: function(){return Photos.find();}, 
+	   imageURL: function(){return Images.findOne().url();
+	    }
+	});
+	 
+	 
+	 
+	 Template.photo.photo=function(){
+		 return Meteor.users.findOne({_id: this.userId}).username;
+		
+		 
+		 
+		 
+	 };
+	 
+	 
+	 
+	 
+	 Template.imagesSubmitted.events({
+	   
+	'dblclick .uploadedImage': function(e){
+	 
+	    Images.remove({_id:this._id});
+	    Photos.remove({_id:this._id});
 	    
+	}
+	
+	
 	    
-      Images.insert(file, function (err, fileObj){
-        //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-      });
-         
-    });
-        
-  }   
-  
-    
-});
+	});
+
+
+}
+
+
    
 
  
     
-    
-*/
+ 

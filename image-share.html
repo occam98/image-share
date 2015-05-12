@@ -16,61 +16,34 @@
 	{{/if}}
 </body>
 
-<!--
 
-<template name = "form">
-
-
-	<h2>Submit a photo of your work</h2>
-	
-		<form class="photoForm">
-		Problem: <input type = "text" id = "problem" placeholder="page # problem #"><br><br>
-		Your group members <input type = "text" id="group" size="50"> <br><br>
-		Your questions and comments about this problem: <br><br>
-		<textarea name="comments" form="photo" rows="4" cols="70" placeholder="Enter text here..."></textarea>
-		<br>
-		
-		Upload a snapshot of your work here: <input type = "file" id = "myFileInput">
-		<br /><br />
-		
-		<input type="submit" value="submit" />
-		</form>
-	<br>
-	
-	
-	<p></p>
-	
-	
-	
-</template>
-	
-	
-	-->
 <template name="insertForm">
 
-			{{> quickForm id="insertForm" type="insert" collection="Photos" omitFields="userId,username"}}
-
-<!--
-			{{#autoForm id="insertForm" type="insert" collection="Photos"}}
-			{{> afQuickField name="userId"}}
-			{{> afQuickField name="username"}}
-			{{> afQuickField name="groupMembers"}}
-			{{> afQuickField name="comments" rows="4"}}
-
-			{{> afQuickField name="fileId" type="cfs-file" collection="images"}}
-			<button type="submit">Submit</button>
-			{{/autoForm}}
-			
-			
--->			
+			{{> quickForm id="insertForm" type="insert" collection="Photos" omitFields="userId,userName"}}
 </template>	
 	
 <template name = "imagesSubmitted">
+	List of photos
+	{{#each photos}}
 	
-	{{#each images}}
+	{{userName}}
+	{{fileId}}
 	<div class = "uploadedImage">  
-	  <img src="{{this.url}}" class = "tableImage" alt="thumbnail">
+		
+
+	  <img src="{{imageURL}}" class = "tableImage" alt="thumbnail">
+	  
 	</div>    
 	{{/each}}
+
+</template>
+
+<template name = "photo">
+This is a photo
+
+	<div class = "uploadedImage">  
+		<img src="{{imageURL}}" class = "tableImage" alt="thumbnail">
+	  
+	</div>  
 
 </template>
