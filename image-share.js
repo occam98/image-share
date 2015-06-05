@@ -1,6 +1,9 @@
 
+
+
  Images = new FS.Collection("images", {
-  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
+  stores: [
+  	new FS.Store.FileSystem("images", {path: "~/uploads"})  	]
 });
 
 Photos = new Mongo.Collection("photos");
@@ -52,7 +55,8 @@ if(Meteor.isClient){
 		  passwordSignupFields: "USERNAME_ONLY"
 	});  
 	
-	//problem is here
+	
+	
 	Template.imagesSubmitted.helpers({
 	   photos: function(){return Photos.find();}, 
 	   imageURL: function(){return Images.findOne().url();
@@ -69,6 +73,8 @@ if(Meteor.isClient){
 		 
 	 };
 	 
+	 
+
 	 
 	 
 	 

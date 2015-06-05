@@ -10,6 +10,10 @@
 body {
   background: #ffffff;
   color: #000000; }
+  
+h1{
+	color: black;
+}  
 
 #main {
   position: relative;
@@ -33,5 +37,21 @@ body {
 }
 
 .uploadedImage{
-	margin-bottom: 10px;
+	width: 50px;
+  display: inline-block;
+	float:left;
+    clear: both;
+	margin-bottom: 100px;
+  margin-left: 100px;
+
+}
+
+
+.tableImage{
+	width: 200px;
+	display:inline-block;
+	float:left;
+  clear:both;
+	margin-bottom: 100px;
+
 }
