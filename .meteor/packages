@@ -8,4 +8,12 @@ autopublish
 insecure
 cfs:standard-packages
 cfs:filesystem
+accounts-password
 
+ian:accounts-ui-bootstrap-3
+underscore
+twbs:bootstrap
+cfs:autoform
+aldeed:collection2
+cfs:graphicsmagick
+aldeed:autoform
